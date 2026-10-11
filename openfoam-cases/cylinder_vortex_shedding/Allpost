@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+cd "$(dirname "$0")"
+: "${WM_PROJECT_DIR:?Source the OpenFOAM v2606 environment first}"
+icoFoam -postProcess -func Q -latestTime > log.Q 2>&1
+icoFoam -postProcess -func vorticity -latestTime > log.vorticity 2>&1
+python3 scripts/analyze_fft.py

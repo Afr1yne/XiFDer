@@ -1,0 +1,25 @@
+# Generated OpenFOAM results
+**/constant/polyMesh/
+openfoam-cases/cylinder_vortex_shedding/[1-9]*/
+openfoam-cases/cylinder_vortex_shedding/0.[0-9]*/
+**/processor*/
+**/postProcessing/
+**/analysis/
+**/log.*
+**/*.foam
+**/dynamicCode/
+# Inputs and outputs supplied locally for postprocessing
+**/cases/
+**/data/
+**/inputs/
+**/outputs/
+**/figures/
+**/pythonResults/
+# Python and media
+**/__pycache__/
+*.pyc
+*.mp4
+*.avi
+*.png
+*.jpg
+*.gif

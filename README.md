@@ -1,2 +1,15 @@
 # XiFDer
-OpenFOAM case configurations for XiFDer
+
+体积无限已发表文章对应的 OpenFOAM 自建算例与计算扩展，统一放在 openfoam-cases 中。
+
+## 当前项目
+
+- cylinder_vortex_shedding：独立二维圆柱算例设置，包含力系数输出、Q 与涡量后处理调用、升力 FFT 分析。
+- geko_ml_calibration：基于官方台阶案例的新增初始化、批量运行、实验误差评价、数据汇总和高斯过程选参脚本。
+- pybfoam_cavity_initialization：基于官方 cavity 的 NumPy 初始速度写入、OpenFOAM 场梯度运算与数据输出脚本。
+
+圆柱目录包含完整计算设置；其他两个目录提供扩展脚本，依赖各自 README 中列出的上游算例、绑定或参考数据。
+
+Q、涡量、力系数、GEKO 模型和有限体积梯度使用 OpenFOAM 自带实现。新增工作及上游来源在各项目中分别说明。
+
+仓库不包含生成网格、求解结果、图片视频、绘图代码或私人凭据。新增内容按方法与复现价值筛选；保留原有版权声明，不重新指定第三方源码许可证。

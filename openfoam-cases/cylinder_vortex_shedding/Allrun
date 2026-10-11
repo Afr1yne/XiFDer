@@ -1,0 +1,15 @@
+#!/bin/sh
+set -eu
+cd "$(dirname "$0")"
+: "${WM_PROJECT_DIR:?Source the OpenFOAM v2606 environment first}"
+if [ -d constant/polyMesh ]; then
+    echo 'Existing mesh found; use a fresh copy to run this case.' >&2
+    exit 1
+fi
+blockMesh > log.blockMesh 2>&1
+checkMesh -allTopology -allGeometry > log.checkMesh 2>&1
+if ! grep -q 'Mesh OK' log.checkMesh; then
+    echo 'Mesh check failed; see log.checkMesh.' >&2
+    exit 1
+fi
+icoFoam > log.icoFoam 2>&1
