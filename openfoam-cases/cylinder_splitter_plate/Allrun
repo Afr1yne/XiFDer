@@ -1,0 +1,25 @@
+#!/bin/sh
+set -eu
+cd "$(dirname "$0")"
+
+command -v blockMesh >/dev/null 2>&1 || { echo 'Source the OpenFOAM v2606 environment first.' >&2; exit 1; }
+command -v pimpleFoam >/dev/null 2>&1 || exit 1
+for case_dir in baseline splitter_plate; do
+    if [ -d "$case_dir/constant/polyMesh" ] || [ -d "$case_dir/postProcessing" ]; then
+        echo "Use a fresh copy: generated mesh or results already exist in $case_dir." >&2
+        exit 1
+    fi
+done
+
+for case_dir in baseline splitter_plate; do
+    (
+        cd "$case_dir"
+        blockMesh > log.blockMesh 2>&1
+        checkMesh > log.checkMesh 2>&1
+        if [ "$case_dir" = baseline ]; then
+            setFields > log.setFields 2>&1
+        fi
+        pimpleFoam > log.pimpleFoam 2>&1
+    )
+done
+echo 'Both simulations finished. Run ./Allpost for force-coefficient statistics.'

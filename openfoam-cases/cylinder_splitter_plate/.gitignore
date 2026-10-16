@@ -1,0 +1,9 @@
+**/constant/polyMesh/
+**/[1-9]*/
+**/0.[0-9]*/
+**/processor*/
+**/postProcessing/
+**/log.*
+**/__pycache__/
+*.pyc
+.test_tmp*/
