@@ -1,0 +1,11 @@
+**/constant/polyMesh/
+**/constant/*/polyMesh/
+**/0.[0-9]*/
+**/[1-9]*/
+**/processor[0-9]*/
+**/postProcessing/
+**/VTK/
+**/log*
+**/*.foam
+**/*.OpenFOAM
+**/__pycache__/

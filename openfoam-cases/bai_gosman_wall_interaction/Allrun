@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+cd -- "$(dirname -- "$0")"
+if [ "$#" -eq 0 ]; then
+    set -- adhesion rebound splash
+fi
+for case_name in "$@"; do
+    case "$case_name" in
+        adhesion|rebound|splash) ;;
+        *) printf 'Unknown case: %s\n' "$case_name" >&2; exit 2 ;;
+    esac
+    (cd "$case_name" && sh ./Allrun)
+done

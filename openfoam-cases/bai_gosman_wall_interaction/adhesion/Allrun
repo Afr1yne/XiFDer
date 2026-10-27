@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+cd -- "$(dirname -- "$0")"
+. "${WM_PROJECT_DIR:?Load the OpenFOAM environment first}/bin/tools/RunFunctions"
+
+runApplication blockMesh
+runApplication checkMesh
+runApplication "$(getApplication)"
